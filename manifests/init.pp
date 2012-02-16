@@ -24,18 +24,26 @@
 # === Examples
 #
 #  class { buildbot:
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ]
+#    ...
 #  }
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Sofer Athlan <mypublicaddress-code@ymail.com>
 #
 # === Copyright
 #
 # Copyright 2011 Your name here, unless otherwise noted.
 #
-class buildbot {
-
-
+class buildbot(
+  $project,
+  $type='slave',
+  $ensure='running',
+  $user='bbslave',
+  $mail='buildbot@example.com',
+  $admin='admin',
+  $master_ip='192.168.0.2',
+  $master_pass='pass1') {
+    include 'buildbot::install', 'buildbot::service',
+      'buildbot::config', "buildbot::$type"
 }
