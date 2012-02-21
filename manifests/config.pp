@@ -9,7 +9,7 @@ class buildbot::config {
       group  => $buildbot::user,
       mode   => '0755',
       owner  => $buildbot::user;
-    "/home/$buildbot::user/buildbot":
+    "/home/$buildbot::user/$buildbot::project":
       ensure => directory,
       group  => $buildbot::user,
       mode   => '0755',
@@ -26,13 +26,13 @@ class buildbot::config {
       owner   => 'root',
       group   => 'root',
       mode    => '0755';
-    "/home/$buildbot::user/buildbot/info/admin":
+    "/home/$buildbot::user/$buildbot::project/info/admin":
       ensure  => file,
       content => "$buildbot::admin <$buildbot::mail>",
       owner   => $buildbot::user,
       group   => $buildbot::user,
       mode    => '0755';
-    "/home/$buildbot::user/buildbot/info/host":
+    "/home/$buildbot::user/$buildbot::project/info/host":
       ensure  => file,
       content => "VBox based on Debian 6.  Can run tests with VBox Creation.\n",
       owner   => $buildbot::user,
