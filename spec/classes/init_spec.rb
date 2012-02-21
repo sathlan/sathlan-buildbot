@@ -1,5 +1,6 @@
 require 'spec_helper'
 describe 'buildbot' do
+  let(:facts) { {:operatingsystem => 'Debian'} }
   let(:params) {
     {
       project: 'compile_stuff',
