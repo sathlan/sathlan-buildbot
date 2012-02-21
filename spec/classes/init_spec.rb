@@ -39,6 +39,8 @@ describe 'buildbot' do
   it "should have the right admin information" do
     content = catalogue.resource('file', '/home/buildbot/compile_stuff/info/admin').send(:parameters)[:content]
     expected_lines = ["alice <alice@dot.com>"]
+    # warning: does not display the real content, when fails.  Use
+    # "puts content"
     (content.split("\n") & expected_lines).should == expected_lines
   end
 
