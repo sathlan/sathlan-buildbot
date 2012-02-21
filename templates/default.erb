@@ -1,6 +1,11 @@
-BB_NUMBER[0]=0                            # index for the other values; negative disables the bot
-BB_NAME[0]="<%= scope.lookupvar('buildbot::user') %>"                     # short name printed on startup / stop
-BB_USER[0]="<%= scope.lookupvar('buildbot::user') %>"                      # user to run as
-BB_BASEDIR[0]="/home/<%= scope.lookupvar('buildbot::user') %>/<%= scope.lookupvar('buildbot::project') %>"    # basedir argument to buildbot (absolute path)
-BB_OPTIONS[0]=""                          # buildbot options
-BB_PREFIXCMD[0]=""                        # prefix command, i.e. nice, linux32, dchroot
+# -*- default-generic -*-
+<% nbr_project = 0 -%>
+<% scope.lookupvar('buildbot::projects').each do |project| -%>
+BB_NUMBER[<%= nbr_project %>]=<%= nbr_project %>                            # index for the other values; negative disables the bot
+BB_NAME[<%= nbr_project %>]="<%= scope.lookupvar('buildbot::user') %>"                     # short name printed on startup / stop
+BB_USER[<%= nbr_project %>]="<%= scope.lookupvar('buildbot::user') %>"                      # user to run as
+BB_BASEDIR[<%= nbr_project %>]="/home/<%= scope.lookupvar('buildbot::user') %>/<%= project %>"    # basedir argument to buildbot (absolute path)
+BB_OPTIONS[<%= nbr_project %>]=""                          # buildbot options
+BB_PREFIXCMD[<%= nbr_project %>]=""                        # prefix command, i.e. nice, linux32, dchroot
+<% nbr_project = nbr_project + 1 -%>
+<% end -%>

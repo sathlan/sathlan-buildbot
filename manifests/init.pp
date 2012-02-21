@@ -36,7 +36,7 @@
 # Copyright 2011 Your name here, unless otherwise noted.
 #
 class buildbot(
-  $project,
+  $projects=[],
   $type='slave',
   $ensure='running',
   $user='bbslave',

@@ -1,3 +1,25 @@
+define buildbot::config::project::instance($project) {
+  file {
+    "/home/$buildbot::user/$project":
+      ensure => directory,
+      group  => $buildbot::user,
+      mode   => '0755',
+      owner  => $buildbot::user;
+    "/home/$buildbot::user/$project/info/admin":
+      ensure  => file,
+      content => "$buildbot::admin <$buildbot::mail>",
+      owner   => $buildbot::user,
+      group   => $buildbot::user,
+      mode    => '0755';
+    "/home/$buildbot::user/$project/info/host":
+      ensure  => file,
+      content => "VBox based on Debian 6.  Can run tests with VBox Creation.\n",
+      owner   => $buildbot::user,
+      group   => $buildbot::user,
+      mode    => '0755';
+  }
+}
+
 class buildbot::config {
   File {
     require => Class['buildbot::install'],
@@ -5,11 +27,6 @@ class buildbot::config {
   }
   file {
     "/home/$buildbot::user/":
-      ensure => directory,
-      group  => $buildbot::user,
-      mode   => '0755',
-      owner  => $buildbot::user;
-    "/home/$buildbot::user/$buildbot::project":
       ensure => directory,
       group  => $buildbot::user,
       mode   => '0755',
@@ -26,17 +43,11 @@ class buildbot::config {
       owner   => 'root',
       group   => 'root',
       mode    => '0755';
-    "/home/$buildbot::user/$buildbot::project/info/admin":
-      ensure  => file,
-      content => "$buildbot::admin <$buildbot::mail>",
-      owner   => $buildbot::user,
-      group   => $buildbot::user,
-      mode    => '0755';
-    "/home/$buildbot::user/$buildbot::project/info/host":
-      ensure  => file,
-      content => "VBox based on Debian 6.  Can run tests with VBox Creation.\n",
-      owner   => $buildbot::user,
-      group   => $buildbot::user,
-      mode    => '0755';
+  }
+  # check this to understand the underlying logic:
+  # http://projects.puppetlabs.com/projects/1/wiki/Handling_Disparate_Defines_With_Classes_Patterns
+  buildbot::config::project::instance {
+    $buildbot::projects:
+      project => $buildbot::projects,
   }
 }
