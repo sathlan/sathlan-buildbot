@@ -1,8 +1,13 @@
 dir = File.expand_path(File.dirname(__FILE__))
-$LOAD_PATH.unshift File.join(dir, 'lib')
+$LOAD_PATH.unshift File.join(dir, '../lib/facter')
+
 
 require 'rspec-puppet'
 require 'tmpdir'
+require 'mocha'
+require 'puppet'
+require 'facter'
+#require 'facter/util/confine'
 
 RSpec.configure do |c|
   c.before :each do
@@ -19,18 +24,13 @@ RSpec.configure do |c|
   c.after :each do
     FileUtils.remove_entry_secure(@puppetdir)
   end
+  c.mock_with :mocha
   c.module_path = File.join(File.dirname(__FILE__), '../../')
 #  c.manifest_dir = '../manifests'
 #  c.manifest = 'init.pp'
 end
 
-#require 'mocha'
-#require 'puppet'
-#require 'rspec'
 #
-#Spec::Runner.configure do |config|
-#    config.mock_with :mocha
-#end
 #
 ## We need this because the RAL uses 'should' as a method.  This
 ## allows us the same behaviour but with a different method name.
