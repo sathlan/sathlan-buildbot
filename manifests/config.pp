@@ -16,7 +16,7 @@ class buildbot::config {
       owner  => $buildbot::user;
     '/etc/default/buildbot':
       ensure  => file,
-      source  => template('buildbot/default'),
+      source  => template('buildbot/default.erb'),
       owner   => 'root',
       group   => 'root',
       mode    => '0644';
