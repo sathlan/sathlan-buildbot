@@ -7,7 +7,7 @@
 # Default-Stop:      0 1 6
 # Short-Description: Load and unload vbox drivers.
 # Description:       To be able to run VBox inside VBox drivers must be unloaded
-#                    which require shares to be umounted.
+#                    which requires shares to be umounted.
 ### END INIT INFO
 
 # Author: Me
