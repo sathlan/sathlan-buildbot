@@ -53,7 +53,7 @@
 #        master_pass: 'my_pass')
 #
 # ==== For a master
-# TODO: master configuration does work.
+# TODO: master configuration does not work.
 #
 # === Authors
 #
