@@ -52,6 +52,9 @@
 #        master_ip: '192.168.0.8',
 #        master_pass: 'my_pass')
 #
+# ==== For a master
+# TODO: master configuration does work.
+#
 # === Authors
 #
 # Sofer Athlan <mypublicaddress-code@ymail.com>
