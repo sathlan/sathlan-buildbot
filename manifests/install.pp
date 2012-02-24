@@ -8,8 +8,8 @@ class buildbot::install {
 
   # group bbslave is automatically created on debian.
   user { $buildbot::user:
-    comment    => 'buildbot user',
     ensure     => present,
+    comment    => 'buildbot user',
     home       => "/home/$buildbot::user",
     managehome => true,
     name       => $buildbot::user,
