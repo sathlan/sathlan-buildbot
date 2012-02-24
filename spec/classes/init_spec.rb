@@ -20,7 +20,6 @@ describe 'buildbot' do
     it { should contain_package('buildbot').with_ensure('present') }
     it { should contain_service('buildbot').with_ensure('running') }
     it { should contain_file('/home/buildbot/').with_ensure('directory') }
-    it { should contain_file('/etc/init.d/vboxload').with_ensure('file') }
     it { should contain_file('/home/buildbot/compile_stuff/info/admin').with(
                                                                         'owner' => 'buildbot',
                                                                         'group' => 'buildbot',) }

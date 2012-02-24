@@ -15,12 +15,6 @@ class buildbot::config {
       owner   => 'root',
       group   => 'root',
       mode    => '0644';
-    '/etc/init.d/vboxload':
-      ensure  => file,
-      source  => 'puppet:///modules/buildbot/vboxload',
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0755';
   }
   # check this to understand the underlying logic:
   # Handling_Disparate_Defines_With_Classes_Patterns
