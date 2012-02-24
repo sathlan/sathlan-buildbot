@@ -3,7 +3,7 @@
 This is the buildbot module.
 
 ## Description
-Check the `manifest/init.pp` file for a description.
+Check the `manifests/init.pp` file for a description.
 
 ## License
 
@@ -15,4 +15,4 @@ Email: mypublicaddress-code@ymail.com
 
 ## Support
 
-Please log tickets and issues at [GitHub](https://github.com/sathlan/puppet-buildbot)
+Please log tickets and issues at [GitHub](https://github.com/sathlan/puppet-buildbot).
